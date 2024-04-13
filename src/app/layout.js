@@ -3,8 +3,9 @@
 import { Raleway } from "next/font/google";
 import './globals.css';
 import { SOCIAL_NETWORKS, ROUTES } from "./constans";
-import { useState } from "react";
+import {  useState } from "react";
 import Link from 'next/link';
+import { usePathname } from "next/navigation";
 
 const raleway = Raleway({
   subsets: ['latin'],
@@ -13,6 +14,7 @@ const raleway = Raleway({
 
 export default function RootLayout({ children }) {
   const [showMenu, setShowMenu] = useState(false);
+  const pathname = usePathname();
 
   const onShowMenu = () => {
     setShowMenu(true);
@@ -27,9 +29,9 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
       </head>
-      <body style={styles.body}>
+      <body style={styles.body} className="bg-primary">
         <div>
-          <div className="bg-primary">
+          <div>
             {/* Header */}
             <div className="px-8 pt-5 pb-1 flex justify-between items-center">
               <div className="font-bold text-3xl text-white">TheMoneyMaker</div>
@@ -63,7 +65,7 @@ export default function RootLayout({ children }) {
             <div className="text-6xl font-extrabold text-white mb-16">Menu</div>
             {ROUTES.map(item => {
               return (
-                <Link onClick={onCloseMenu} key={item.id} href={item.route} className="mb-9 text-white font text-3xl font-medium">{item.name}</Link>
+                <Link onClick={onCloseMenu} key={item.id} href={item.route} className={`mb-9 text-white font text-3xl font-medium ${pathname === item.route ? 'underline text-opacity-50' : ''}`}>{item.name}</Link>
               )
             })}
           </div>

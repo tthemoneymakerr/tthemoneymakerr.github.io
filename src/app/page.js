@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { TEAM_MEMBERS } from './constans';
+import Link from 'next/link';
 
 // http://preview.themeforest.net/item/bleurant-creative-team-and-portfolio-html-template/full_screen_preview/20904237?_ga=2.195309800.557983375.1712743228-1431022156.1712743228
 
@@ -35,9 +36,9 @@ export default function Home() {
         <div className="text-3xl font-medium text-white text-center">We will work together for your creative project.</div>
       </div>
 
-      <div className="inline-block bg-white py-6 px-12 rounded cursor-pointer hover:bg-[#484747] hover:text-white text-2xl font-bold text-[#666666]">
+      <Link href='/portfolio' className="inline-block bg-white py-6 px-12 rounded cursor-pointer hover:bg-[#484747] hover:text-white text-2xl font-bold text-[#666666]">
         Portfolio
-      </div>
+      </Link>
     </div>
   );
 }
