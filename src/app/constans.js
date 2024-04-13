@@ -57,4 +57,32 @@ const TEAM_MEMBERS = [
     }
 ];
 
-export { SOCIAL_NETWORKS, TEAM_MEMBERS };
+const ROUTES = [
+    {
+        id: 0,
+        route: '/',
+        name: 'Home'
+    },
+    {
+        id: 1,
+        route: '/about',
+        name: 'About'
+    },
+    {
+        id: 2,
+        route: '/portfolio',
+        name: 'Portfolio'
+    },
+    {
+        id: 3,
+        route: '/client',
+        name: 'Client'
+    },
+    {
+        id: 4,
+        route: '/contact',
+        name: 'Contact'
+    }
+];
+
+export { SOCIAL_NETWORKS, TEAM_MEMBERS, ROUTES };
