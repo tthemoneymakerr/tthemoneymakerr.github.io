@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
+import { SOCIAL_NETWORKS, TEAM_MEMBERS } from './constans';
 
 // http://preview.themeforest.net/item/bleurant-creative-team-and-portfolio-html-template/full_screen_preview/20904237?_ga=2.195309800.557983375.1712743228-1431022156.1712743228
 
@@ -38,42 +39,23 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 w-full gap-16 px-8 mb-32">
-            <div className="w-full bg-red-500">
-              <Image
-                src='/imgs/avatar/avatar_kiet.jpg'
-                width="0"
-                height="0"
-                sizes="100vw"
-                style={{ width: '100%', height: 'auto' }}
-              />
-            </div>
-            <div className="w-full bg-red-500">
-              <Image
-                src='/imgs/avatar/avatar_kiet.jpg'
-                width="0"
-                height="0"
-                sizes="100vw"
-                style={{ width: '100%', height: 'auto' }}
-              />
-            </div>
-            <div className="w-full bg-red-500">
-              <Image
-                src='/imgs/avatar/avatar_kiet.jpg'
-                width="0"
-                height="0"
-                sizes="100vw"
-                style={{ width: '100%', height: 'auto' }}
-              />
-            </div>
-            <div className="w-full bg-red-500">
-              <Image
-                src='/imgs/avatar/avatar_kiet.jpg'
-                width="0"
-                height="0"
-                sizes="100vw"
-                style={{ width: '100%', height: 'auto' }}
-              />
-            </div>
+            {TEAM_MEMBERS.map(item => {
+              return (
+                <div className="group w-full bg-red-500 relative" key={item.id}>
+                  <Image
+                    src={item.imagePath}
+                    width="0"
+                    height="0"
+                    sizes="100vw"
+                    style={{ width: '100%', height: 'auto' }}
+                  />
+                  <div className="group-hover:flex hidden absolute top-0 bottom-0 left-0 right-0 bg-primary border-8 border-white/50 flex-col justify-center items-center">
+                    <div className="text-3xl font-bold text-white mb-4">{item.name}</div>
+                    <div className="text-2xl font-medium text-white">{item.position}</div>
+                  </div>
+                </div>
+              )
+            })}
           </div>
 
           <div className="flex flex-col items-center mb-12 px-9">
@@ -86,7 +68,15 @@ export default function Home() {
         </div>
 
         {/* Footer */}
-        <div></div>
+        <div className="flex justify-center py-9">
+          {SOCIAL_NETWORKS.map(item => {
+            return (
+              <div className={`text-3xl text-white ${!item.isLastIndex && 'mr-11'}`} key={item.id}>
+                <i className={item.iconClassName} />
+              </div>
+            )
+          })}
+        </div>
       </div>
       <div className={`fixed ${showMenu ? 'left-0 opacity-100' : 'left-full opacity-0'} top-0 w-screen h-screen bg-primary duration-1000 flex flex-col justify-center items-center`}>
         <div onClick={onCloseMenu} className={`${showMenu ? 'block' : 'hidden'} fixed top-6 right-10 text-4xl text-white hover:rotate-90 duration-200 cursor-pointer hover:opacity-80`}>
